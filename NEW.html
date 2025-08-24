@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Life Infotech — IT Solutions & Services</title>
+  <meta name="description" content="IT services company website template — HTML & CSS only, responsive and fast.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #111735;
+      --muted: #9aa4c7;
+      --text: #e6e9ff;
+      --brand: #6c8bff;
+      --brand-2: #7ce2ff;
+      --accent: #b76cff;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif; color: var(--text); background: radial-gradient(1200px 800px at 100% -10%, rgba(124,226,255,.10), transparent 60%), radial-gradient(800px 600px at -10% 10%, rgba(183,108,255,.10), transparent 60%), var(--bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1200px, 92%); margin: 0 auto; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(140%) blur(10px);
+      background: rgba(11,16,32,.6); border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0;
+    }
+    .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .3px; }
+    .logo-badge { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--accent)); display: grid; place-items: center; box-shadow: var(--shadow); }
+    .logo-badge svg { filter: drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
+    .nav-links { display: flex; gap: 18px; align-items: center; }
+    .nav-links a { padding: 10px 12px; border-radius: 12px; color: var(--muted); font-weight: 500; }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,.06); }
+    .cta { padding: 10px 16px; border-radius: 999px; background: linear-gradient(135deg, var(--brand), var(--accent)); font-weight: 700; box-shadow: var(--shadow); }
+
+    /* Hero */
+    .hero { padding: 80px 0 40px; position: relative; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+    .eyebrow { color: var(--brand-2); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: 12px; }
+    .headline { font-size: clamp(32px, 5vw, 56px); line-height: 1.05; font-weight: 800; margin: 10px 0 14px; }
+    .subhead { color: var(--muted); font-size: clamp(14px, 2.1vw, 18px); max-width: 60ch; }
+    .hero-cta { margin-top: 24px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn { padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,.08); font-weight: 600; }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--accent)); border: none; box-shadow: var(--shadow); }
+    .btn.ghost { background: rgba(255,255,255,.05); color: var(--text); }
+
+    .hero-card { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); padding: 22px; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+    .kpi { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 14px; }
+    .kpi strong { display: block; font-size: 20px; }
+    .kpi span { color: var(--muted); font-size: 12px; }
+
+    /* Section base */
+    section { padding: 70px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 26px; }
+    .section-title { font-size: clamp(22px, 3vw, 34px); margin: 0; }
+    .section-desc { color: var(--muted); max-width: 60ch; }
+
+    /* Services */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 22px; transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,.3); }
+    .card .icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(135deg, rgba(124,226,255,.25), rgba(108,139,255,.25)); margin-bottom: 14px; }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 26px; }
+    .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .list li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; }
+    .tick { width: 22px; height: 22px; border-radius: 7px; display: grid; place-items: center; background: linear-gradient(135deg, rgba(124,226,255,.25), rgba(108,139,255,.25)); }
+
+    /* Stats band */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .stat { text-align: center; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 20px; }
+    .stat strong { font-size: 28px; display: block; }
+    .stat span { color: var(--muted); font-size: 12px; }
+
+    /* Portfolio */
+    .portfolio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .work { border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,.08); background: #0f1533; }
+    .work .thumb { aspect-ratio: 16/10; background: linear-gradient(135deg, rgba(124,226,255,.15), rgba(183,108,255,.15)); display: grid; place-items: center; font-weight: 700; color: rgba(255,255,255,.7); }
+    .work .meta { padding: 14px; color: var(--muted); font-size: 14px; display: flex; align-items: center; justify-content: space-between; }
+
+    /* Testimonials */
+    .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .quote { background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 18px; }
+    .quote p { color: var(--text); font-size: 15px; }
+    .quote .who { display: flex; align-items: center; gap: 12px; margin-top: 14px; color: var(--muted); }
+    .avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); display: grid; place-items: center; font-weight: 800; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; }
+    form { display: grid; gap: 12px; }
+    .field { display: grid; gap: 6px; }
+    .field label { color: var(--muted); font-size: 13px; }
+    .field input, .field textarea, .field select {
+      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); color: var(--text);
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    .note { color: var(--muted); font-size: 13px; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,.06); padding: 30px 0; color: var(--muted); }
+    .foot { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; }
+    .social { display: flex; gap: 12px; }
+    .social a { padding: 8px 10px; border-radius: 10px; background: rgba(255,255,255,.06); }
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 820px){
+      .cards, .portfolio, .testimonials { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px){
+      .nav-links { display: none; }
+      .cards, .portfolio, .testimonials { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a href="#top" class="logo">
+        <span class="logo-badge" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l3.5 6.5L22 9l-5 4.5L18 21l-6-3.5L6 21l1-7.5L2 9l6.5-.5L12 2z" fill="white"/>
+          </svg>
+        </span>
+        <span>Life <span style="color:var(--brand-2)">Infotech</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#contact">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">End‑to‑end IT solutions</div>
+        <h1 class="headline">We build fast, secure and scalable digital experiences.</h1>
+        <p class="subhead">From lightning‑quick websites to custom software and cloud infrastructure, our team helps you launch, grow and scale — with measurable ROI.</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#contact">Start a Project</a>
+          <a class="btn ghost" href="#services">Explore Services</a>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><strong>250+</strong><span>Projects Delivered</span></div>
+          <div class="kpi"><strong>98%</strong><span>Client Satisfaction</span></div>
+          <div class="kpi"><strong>24/7</strong><span>Support Available</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3 style="margin:0 0 6px">Free Website Audit</h3>
+        <p class="note" style="margin:0 0 14px">Identify quick wins for performance, SEO and accessibility.</p>
+        <ul class="list">
+          <li><span class="tick">✓</span><span>Core Web Vitals & load time analysis</span></li>
+          <li><span class="tick">✓</span><span>On‑page SEO opportunities</span></li>
+          <li><span class="tick">✓</span><span>Security & accessibility checks</span></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-desc">Full‑stack expertise to take you from idea to impact. Pick a package or mix & match.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="icon">⚡</div>
+          <h3>Web Design & Development</h3>
+          <p>Modern, responsive websites optimized for conversions and speed.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🛍️</div>
+          <h3>E‑Commerce</h3>
+          <p>High‑performance storefronts with secure payments and inventory.</p>
+        </article>
+        <article class="card">
+          <div class="icon">☁️</div>
+          <h3>Cloud & DevOps</h3>
+          <p>Infrastructure as code, CI/CD and autoscaling for reliability.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🔒</div>
+          <h3>Security & Compliance</h3>
+          <p>Hardening, monitoring and audits to protect your business.</p>
+        </article>
+        <article class="card">
+          <div class="icon">📈</div>
+          <h3>SEO & Performance</h3>
+          <p>Technical SEO and UX tuning for higher rankings and engagement.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🤖</div>
+          <h3>Automation</h3>
+          <p>Integrations and workflows that save time and reduce errors.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container about-grid">
+      <div>
+        <div class="section-head" style="margin:0 0 10px">
+          <h2 class="section-title">Why choose us</h2>
+        </div>
+        <p class="section-desc">We blend strategy, design and engineering. Our teams operate with clear communication, transparent pricing and a focus on outcomes.</p>
+        <ul class="list" style="margin-top:14px">
+          <li><span class="tick">✓</span><span>Dedicated project manager</span></li>
+          <li><span class="tick">✓</span><span>Modular, scalable architecture</span></li>
+          <li><span class="tick">✓</span><span>Ownership of code and assets</span></li>
+          <li><span class="tick">✓</span><span>Post‑launch support & training</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="stats">
+          <div class="stat"><strong>10+ yrs</strong><span>Combined Experience</span></div>
+          <div class="stat"><strong>35%</strong><span>Avg. faster load times</span></div>
+          <div class="stat"><strong>50+</strong><span>Happy Partners</span></div>
+          <div class="stat"><strong>5 mins</strong><span>Avg. response time</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Recent Work</h2>
+        <p class="section-desc">A quick peek at projects across industries. Replace thumbs with your own screenshots.</p>
+      </div>
+      <div class="portfolio">
+        <article class="work">
+          <div class="thumb">SaaS Dashboard</div>
+          <div class="meta"><span>Next.js, Node, PostgreSQL</span><a href="#">Case Study →</a></div>
+        </article>
+        <article class="work">
+          <div class="thumb">E‑Commerce</div>
+          <div class="meta"><span>Shopify, Headless</span><a href="#">View →</a></div>
+        </article>
+        <article class="work">
+          <div class="thumb">Corporate Site</div>
+          <div class="meta"><span>Static + CMS</span><a href="#">View →</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">What clients say</h2>
+        <p class="section-desc">Real feedback from teams we partner with long‑term.</p>
+      </div>
+      <div class="testimonials">
+        <article class="quote">
+          <p>“Delivered on time and on point. Our conversion rate jumped in the first week.”</p>
+          <div class="who"><span class="avatar">A</span><span>Amrita — Growth Lead</span></div>
+        </article>
+        <article class="quote">
+          <p>“Clean code, great communication and flawless DevOps. Highly recommend.”</p>
+          <div class="who"><span class="avatar">R</span><span>Rahul — CTO</span></div>
+        </article>
+        <article class="quote">
+          <p>“They think like product owners, not just vendors. Huge impact.”</p>
+          <div class="who"><span class="avatar">S</span><span>Sneha — Founder</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Band -->
+  <section aria-label="CTA" style="padding: 40px 0;">
+    <div class="container" style="background: linear-gradient(135deg, rgba(124,226,255,.12), rgba(183,108,255,.12)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: 24px; display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center;">
+      <div>
+        <h3 style="margin:0 0 6px">Have a project in mind?</h3>
+        <p class="note" style="margin:0">We’ll scope it in 48 hours and share a clear roadmap.</p>
+      </div>
+      <a class="btn primary" href="#contact">Request Proposal</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container contact-grid">
+      <div>
+        <div class="section-head" style="margin:0 0 12px">
+          <h2 class="section-title">Contact us</h2>
+        </div>
+        <p class="section-desc">Tell us about your goals and we’ll suggest the most effective next steps.</p>
+        <div style="margin-top:14px; display:grid; gap:8px; color:var(--muted)">
+          <div>📍 Chennai, India</div>
+          <div>✉️ hello@lifeinfotech.example</div>
+          <div>📞 +91 98765 43210</div>
+        </div>
+      </div>
+      <div>
+        <form action="#" method="post" onsubmit="return false;">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your full name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required>
+          </div>
+          <div class="field">
+            <label for="service">Service</label>
+            <select id="service" name="service">
+              <option>Web Development</option>
+              <option>SEO & Performance</option>
+              <option>Cloud & DevOps</option>
+              <option>Automation</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your project..."></textarea>
+          </div>
+          <button class="btn primary" type="submit">Send Message</button>
+          <p class="note"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <div>© <span id="y"></span> Life Infotech. All rights reserved.</div>
+      <div class="social">
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Twitter">t</a>
+        <a href="#" aria-label="GitHub">gh</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Year (no external JS needed; optional) -->
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <script>
+  // script.js
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
+// Mobile menu toggle
+const nav = document.querySelector('.nav-links');
+const toggleBtn = document.createElement('button');
+toggleBtn.innerText = "☰";
+toggleBtn.className = "menu-toggle";
+document.querySelector('.nav').prepend(toggleBtn);
+
+toggleBtn.addEventListener('click', () => {
+  nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+});
+
+// Form validation
+const form = document.querySelector('form');
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name');
+  const email = document.getElementById('email');
+  const message = document.getElementById('message');
+
+  if (name.value.trim() === "" || email.value.trim() === "" || message.value.trim() === "") {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  if (!/\S+@\S+\.\S+/.test(email.value)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  alert("Message sent successfully (demo). Connect with backend to process data.");
+  form.reset();
+});
+
+// Back-to-top button
+const backToTop = document.createElement("button");
+backToTop.innerText = "↑";
+backToTop.id = "backToTop";
+backToTop.style.cssText = `
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 14px;
+  border-radius: 50%;
+  background: #6c8bff;
+  color: white;
+  border: none;
+  display: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+`;
+
+document.body.appendChild(backToTop);
+
+window.addEventListener("scroll", () => {
+  backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+});
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+</script>
+</body>
+</html>
